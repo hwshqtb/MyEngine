@@ -1,0 +1,6 @@
+add_executable(qt_port_qsignalblocker qsignalblocker_test.cpp)
+target_link_libraries(qt_port_qsignalblocker PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(qt_port_qsignalblocker PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME qt_port_qsignalblocker COMMAND qt_port_qsignalblocker)

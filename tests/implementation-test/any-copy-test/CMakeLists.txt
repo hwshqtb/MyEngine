@@ -1,0 +1,6 @@
+add_executable(any_copy_test any_copy_test.cpp)
+target_link_libraries(any_copy_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(any_copy_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME any_copy_test COMMAND any_copy_test)

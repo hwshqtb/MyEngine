@@ -1,0 +1,6 @@
+add_executable(meta_table_test meta_table_test.cpp)
+target_link_libraries(meta_table_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(meta_table_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME meta_table_test COMMAND meta_table_test)

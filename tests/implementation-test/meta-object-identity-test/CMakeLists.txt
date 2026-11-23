@@ -1,0 +1,6 @@
+add_executable(meta_object_identity_test meta_object_identity_test.cpp)
+target_link_libraries(meta_object_identity_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(meta_object_identity_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME meta_object_identity_test COMMAND meta_object_identity_test)

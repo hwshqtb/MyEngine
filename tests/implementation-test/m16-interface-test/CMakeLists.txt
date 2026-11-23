@@ -1,0 +1,6 @@
+add_executable(m16_interface_test m16_interface_test.cpp)
+target_link_libraries(m16_interface_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(m16_interface_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME m16_interface_test COMMAND m16_interface_test)

@@ -1,0 +1,6 @@
+add_executable(thread_pool_test thread_pool_test.cpp)
+target_link_libraries(thread_pool_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(thread_pool_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME thread_pool_test COMMAND thread_pool_test)

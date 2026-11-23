@@ -1,0 +1,6 @@
+add_executable(const_signal_test const_signal_test.cpp)
+target_link_libraries(const_signal_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(const_signal_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME const_signal_test COMMAND const_signal_test)

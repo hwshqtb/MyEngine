@@ -1,0 +1,6 @@
+add_executable(m21_canonical_name_test m21_canonical_name_test.cpp)
+target_link_libraries(m21_canonical_name_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(m21_canonical_name_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME m21_canonical_name_test COMMAND m21_canonical_name_test)

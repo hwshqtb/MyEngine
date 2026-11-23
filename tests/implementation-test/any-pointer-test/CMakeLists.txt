@@ -1,0 +1,6 @@
+add_executable(any_pointer_test any_pointer_test.cpp)
+target_link_libraries(any_pointer_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(any_pointer_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME any_pointer_test COMMAND any_pointer_test)

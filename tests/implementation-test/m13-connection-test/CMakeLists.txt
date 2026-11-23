@@ -1,0 +1,6 @@
+add_executable(m13_connection_test m13_connection_test.cpp)
+target_link_libraries(m13_connection_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(m13_connection_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME m13_connection_test COMMAND m13_connection_test)

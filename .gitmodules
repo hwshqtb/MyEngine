@@ -1,0 +1,6 @@
+[submodule "external/SDL3"]
+	path = external/SDL3
+	url = https://github.com/libsdl-org/SDL.git
+[submodule "external/minimp3"]
+	path = external/minimp3
+	url = https://github.com/lieff/minimp3.git

@@ -1,0 +1,200 @@
+# Doxygen configuration for hwshqtb::metaobject
+# Usage:  doxygen Doxyfile        (run from the repository root; doxygen must be on PATH)
+#
+# The library is header-driven (the meta-object tables are built by consteval
+# code in the headers), so `include/` is the documentation source. `src/` and
+# `tests/` are deliberately not input: the former is implementation plumbing,
+# the latter is not API.
+#
+# C++26 notes: the sources use reflection (`^^T`, `typename[: r :]`,
+# `template for`) and reflection attributes (`[[= make_property(...)]]`).
+# Doxygen does not model those constructs; the settings below keep it from
+# tripping over them rather than trying to expand them.
+
+PROJECT_NAME           = "MyEngine"
+PROJECT_BRIEF          = "A C++26 reflection-driven rewrite of Qt, in namespace hwshqtb"
+PROJECT_NUMBER         = 0.1
+OUTPUT_DIRECTORY       = doc/doxygen
+CREATE_SUBDIRS         = NO
+ALLOW_UNICODE_NAMES    = YES
+OUTPUT_LANGUAGE        = English
+BRIEF_MEMBER_DESC      = YES
+REPEAT_BRIEF           = YES
+ALWAYS_DETAILED_SEC    = NO
+FULL_PATH_NAMES        = NO
+# Paths are stripped RELATIVE to the directory doxygen runs in (the repository root), so this file
+# carries no machine-specific absolute path: a clone anywhere produces the same documentation.
+STRIP_FROM_PATH        = . include docs
+JAVADOC_AUTOBRIEF      = NO
+QT_AUTOBRIEF           = NO
+MULTILINE_CPP_IS_BRIEF = NO
+INHERIT_DOCS           = YES
+SEPARATE_MEMBER_PAGES  = NO
+TAB_SIZE               = 4
+OPTIMIZE_OUTPUT_FOR_C  = NO
+OPTIMIZE_OUTPUT_JAVA   = NO
+MARKDOWN_SUPPORT       = YES
+AUTOLINK_SUPPORT       = YES
+BUILTIN_STL_SUPPORT    = YES
+CPP_CLI_SUPPORT        = NO
+SIP_SUPPORT            = NO
+IDL_PROPERTY_SUPPORT   = YES
+DISTRIBUTE_GROUP_DOC   = NO
+SUBGROUPING            = YES
+TYPEDEF_HIDES_STRUCT   = NO
+LOOKUP_CACHE_SIZE      = 0
+
+# --- extraction -------------------------------------------------------------
+# Only documented entities are emitted: the headers carry a full `///` layer,
+# and an undocumented symbol showing up is a signal that a doc comment is
+# missing rather than something to paper over with EXTRACT_ALL.
+EXTRACT_ALL            = NO
+EXTRACT_PRIVATE        = NO
+EXTRACT_PRIV_VIRTUAL   = NO
+EXTRACT_PACKAGE        = NO
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+EXTRACT_LOCAL_METHODS  = NO
+EXTRACT_ANON_NSPACES   = NO
+RESOLVE_UNNAMED_PARAMS = YES
+HIDE_UNDOC_MEMBERS     = NO
+HIDE_UNDOC_CLASSES     = NO
+HIDE_FRIEND_COMPOUNDS  = NO
+HIDE_IN_BODY_DOCS      = NO
+INTERNAL_DOCS          = NO
+CASE_SENSE_NAMES       = YES
+HIDE_SCOPE_NAMES       = NO
+HIDE_COMPOUND_REFERENCE= NO
+SHOW_HEADERFILE        = YES
+SHOW_INCLUDE_FILES     = YES
+SHOW_GROUPED_MEMB_INC  = NO
+FORCE_LOCAL_INCLUDES   = NO
+INLINE_INFO            = YES
+SORT_MEMBER_DOCS       = YES
+SORT_BRIEF_DOCS        = NO
+SORT_MEMBERS_CTORS_1ST = YES
+SORT_GROUP_NAMES       = NO
+SORT_BY_SCOPE_NAME     = NO
+STRICT_PROTO_MATCHING  = NO
+GENERATE_TODOLIST      = YES
+GENERATE_TESTLIST      = YES
+GENERATE_BUGLIST       = YES
+GENERATE_DEPRECATEDLIST= YES
+ENABLED_SECTIONS       =
+MAX_INITIALIZER_LINES  = 30
+SHOW_USED_FILES        = YES
+SHOW_FILES             = YES
+SHOW_NAMESPACES        = YES
+FILE_VERSION_FILTER    =
+LAYOUT_FILE            =
+CITE_BIB_FILES         =
+
+# --- warnings ---------------------------------------------------------------
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = NO
+WARN_IF_DOC_ERROR      = YES
+WARN_IF_INCOMPLETE_DOC = YES
+WARN_NO_PARAMDOC       = NO
+WARN_AS_ERROR          = FAIL_ON_WARNINGS
+WARN_FORMAT            = "$file:$line: $text"
+WARN_LINE_FORMAT       = "at line $line of file $file"
+WARN_LOGFILE           = doc/doxygen/doxygen-warnings.log
+
+# --- input ------------------------------------------------------------------
+INPUT                  = include docs/mainpage.md docs/model.md docs/events.md docs/ui.md docs/conventions.md
+INPUT_ENCODING         = UTF-8
+FILE_PATTERNS          = *.h *.hpp *.md
+RECURSIVE              = YES
+EXCLUDE                =
+EXCLUDE_SYMLINKS       = NO
+EXCLUDE_PATTERNS       =
+EXCLUDE_SYMBOLS        =
+EXAMPLE_PATH           =
+EXAMPLE_PATTERNS       =
+EXAMPLE_RECURSIVE      = NO
+IMAGE_PATH             =
+INPUT_FILTER           =
+FILTER_PATTERNS        =
+FILTER_SOURCE_FILES    = NO
+FILTER_SOURCE_PATTERNS =
+USE_MDFILE_AS_MAINPAGE = docs/mainpage.md
+
+# --- source browser ---------------------------------------------------------
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+STRIP_CODE_COMMENTS    = NO
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+REFERENCES_LINK_SOURCE = YES
+SOURCE_TOOLTIPS        = YES
+USE_HTAGS              = NO
+VERBATIM_HEADERS       = YES
+CLANG_ASSISTED_PARSING = NO
+
+# --- alphabetical index -----------------------------------------------------
+ALPHABETICAL_INDEX     = YES
+IGNORE_PREFIX          =
+
+# --- HTML -------------------------------------------------------------------
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_FILE_EXTENSION    = .html
+HTML_COLORSTYLE        = AUTO_LIGHT
+HTML_COLORSTYLE_HUE    = 220
+HTML_COLORSTYLE_SAT    = 100
+HTML_COLORSTYLE_GAMMA  = 80
+HTML_DYNAMIC_MENUS     = YES
+HTML_DYNAMIC_SECTIONS  = YES
+HTML_INDEX_NUM_ENTRIES = 100
+GENERATE_DOCSET        = NO
+GENERATE_HTMLHELP      = NO
+GENERATE_QHP           = NO
+GENERATE_ECLIPSEHELP   = NO
+DISABLE_INDEX          = NO
+GENERATE_TREEVIEW      = YES
+FULL_SIDEBAR           = NO
+ENUM_VALUES_PER_LINE   = 4
+TREEVIEW_WIDTH         = 250
+EXT_LINKS_IN_WINDOW    = NO
+OBFUSCATE_EMAILS       = YES
+HTML_FORMULA_FORMAT    = png
+FORMULA_FONTSIZE       = 10
+SEARCHENGINE           = YES
+SERVER_BASED_SEARCH    = NO
+EXTERNAL_SEARCH        = NO
+
+# --- LaTeX / RTF / man / XML / DocBook --------------------------------------
+GENERATE_LATEX         = NO
+GENERATE_RTF           = NO
+GENERATE_MAN           = NO
+GENERATE_XML           = NO
+GENERATE_DOCBOOK       = NO
+GENERATE_AUTOGEN_DEF   = NO
+
+# --- preprocessor -----------------------------------------------------------
+# The reflection macros (`OBJECT`, `GADGET`, `SIGNAL`, `META_OBJECT`, ...) expand
+# into code doxygen cannot model. `OBJECT`/`GADGET`/`META_*` are statements, so
+# they are declared empty and the parser skips them. `SIGNAL(...)`/`SLOT(...)`
+# instead expand to their own argument, which is a real member declaration: that
+# is what keeps a signal visible in the docs (expanding them to nothing makes the
+# signal disappear AND makes its @param block leak onto the next function).
+# `[[= ...]]` reflection attributes are left alone (no macro expansion means
+# doxygen never tries to interpret them).
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+EXPAND_ONLY_PREDEF     = YES
+SEARCH_INCLUDES        = YES
+INCLUDE_PATH           =
+INCLUDE_FILE_PATTERNS  =
+PREDEFINED             = OBJECT= GADGET= META_OBJECT(x)= META_GADGET(x)= \
+                         SIGNAL(x)=x; SLOT(x)=x; HWSHQTB_EXPORT=
+EXPAND_AS_DEFINED      =
+SKIP_FUNCTION_MACROS   = YES
+
+# --- external references ----------------------------------------------------
+TAGFILES               =
+GENERATE_TAGFILE       =
+ALLEXTERNALS           = NO
+EXTERNAL_GROUPS        = YES
+EXTERNAL_PAGES         = YES

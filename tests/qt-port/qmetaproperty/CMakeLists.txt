@@ -1,0 +1,6 @@
+add_executable(qt_port_qmetaproperty qmetaproperty_test.cpp)
+target_link_libraries(qt_port_qmetaproperty PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(qt_port_qmetaproperty PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME qt_port_qmetaproperty COMMAND qt_port_qmetaproperty)

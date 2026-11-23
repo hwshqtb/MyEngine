@@ -1,0 +1,6 @@
+add_executable(m11_dynamic_test m11_dynamic_test.cpp)
+target_link_libraries(m11_dynamic_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(m11_dynamic_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME m11_dynamic_test COMMAND m11_dynamic_test)

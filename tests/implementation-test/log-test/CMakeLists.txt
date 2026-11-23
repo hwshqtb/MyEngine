@@ -1,0 +1,6 @@
+add_executable(log_test log_test.cpp)
+target_link_libraries(log_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(log_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME log_test COMMAND log_test)

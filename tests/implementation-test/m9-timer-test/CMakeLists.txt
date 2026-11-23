@@ -1,0 +1,6 @@
+add_executable(m9_timer_test m9_timer_test.cpp)
+target_link_libraries(m9_timer_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(m9_timer_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME m9_timer_test COMMAND m9_timer_test)

@@ -1,0 +1,5 @@
+add_executable(demo demo.cpp)
+target_link_libraries(demo PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(demo PRIVATE -Wl,--allow-multiple-definition)
+endif()

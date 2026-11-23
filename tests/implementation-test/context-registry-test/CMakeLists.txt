@@ -1,0 +1,6 @@
+add_executable(context_registry_test context_registry_test.cpp)
+target_link_libraries(context_registry_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(context_registry_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME context_registry_test COMMAND context_registry_test)

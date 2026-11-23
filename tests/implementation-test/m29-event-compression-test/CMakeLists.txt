@@ -1,0 +1,6 @@
+add_executable(m29_event_compression_test m29_event_compression_test.cpp)
+target_link_libraries(m29_event_compression_test PRIVATE gui)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(m29_event_compression_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME m29_event_compression_test COMMAND m29_event_compression_test)

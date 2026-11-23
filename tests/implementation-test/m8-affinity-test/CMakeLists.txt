@@ -1,0 +1,6 @@
+add_executable(m8_thread_test m8_thread_test.cpp)
+target_link_libraries(m8_thread_test PRIVATE metaobject)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(m8_thread_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME m8_thread_test COMMAND m8_thread_test)

@@ -1,0 +1,6 @@
+add_executable(m12_event_test m12_event_test.cpp)
+target_link_libraries(m12_event_test PRIVATE metaobject SDL3::SDL3)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(m12_event_test PRIVATE -Wl,--allow-multiple-definition)
+endif()
+add_test(NAME m12_event_test COMMAND m12_event_test)
